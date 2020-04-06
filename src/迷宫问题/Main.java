@@ -13,7 +13,7 @@ public class Main {
             int col = Integer.parseInt(s[1]);
 
             int[][] arr = new int[row + 2][col + 2];
-            try {
+
                 for (int i = 0; i <= col + 1; i++) {
                     arr[0][i] = 1;
                     arr[row + 1][i] = 1;
@@ -64,9 +64,6 @@ public class Main {
                         }
                     }
 
-            }catch (Exception e){
-                continue;
-            }
         }
     }
 
