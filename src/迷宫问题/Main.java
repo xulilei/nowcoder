@@ -1,3 +1,5 @@
+package 迷宫问题;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -59,10 +61,10 @@ public class Main {
         if(arr[i][j]==0){
             arr[i][j]=2;
             if(findWay(arr,i,j+1,row,col)||//下
-               findWay(arr, i+1, j,row,col)||//右
-                findWay(arr,i,j-1,row,col)||//上
-                 findWay(arr, i-1, j,row,col)){//左
-                      return true;//满足继续往下走
+                    findWay(arr, i+1, j,row,col)||//右
+                    findWay(arr,i,j-1,row,col)||//上
+                    findWay(arr, i-1, j,row,col)){//左
+                return true;//满足继续往下走
             }else {
                 arr[i][j] = 0;
                 return false;
