@@ -12,54 +12,58 @@ public class Main {
             int col = Integer.parseInt(s[1]);
 
             int[][] arr = new int[row + 2][col + 2];
-            for (int i = 0; i <= row + 1; i++) {
-                arr[0][i] = 1;
-                arr[row + 1][i] = 1;
-            }
-            for (int i = 0; i <= col + 1; i++) {
-                arr[i][0] = 1;
-                arr[i][col + 1] = 1;
-            }
-            for (int i = 0; i < row; i++) {
-                String rowStr = bf.readLine();
-                String[] s1 = rowStr.split(" ");
-                for (int j = 0; j < col; j++) {
-                    arr[i + 1][j + 1] = Integer.parseInt(s1[j]);
+            try {
+                for (int i = 0; i <= col + 1; i++) {
+                    arr[0][i] = 1;
+                    arr[row + 1][i] = 1;
                 }
-            }
-            /*for (int[] column : arr) {
-                for (int i : column) {
-                    System.out.print(i + " ");
+                for (int i = 0; i <= row + 1; i++) {
+                    arr[i][0] = 1;
+                    arr[i][col + 1] = 1;
                 }
-                System.out.println();
-            }
-            System.out.println("===========");*/
-            findWay(arr, 1, 1, col, row);
-            /*for (int[] column : arr) {
-                for (int i : column) {
-                    System.out.print(i + " ");
+                for (int i = 0; i < row; i++) {
+                    String rowStr = bf.readLine();
+                    String[] s1 = rowStr.split(" ");
+                    for (int j = 0; j < col; j++) {
+                        arr[i + 1][j + 1] = Integer.parseInt(s1[j]);
+                    }
                 }
-                System.out.println();
-            }
-            System.out.println("===========");*/
-            for (int i = 1, j = 1; i <= row && j <= col; ) {
-                System.out.println("(" + (i - 1) + "," + (j - 1) + ")");
-                if (i + 1 <= row && arr[i + 1][j] == 2) {
-                    i++;
-                } else {
-                    j++;
+                for (int[] column : arr) {
+                    for (int i : column) {
+                        System.out.print(i + " ");
+                    }
+                    System.out.println();
                 }
+                System.out.println("===========");
+                findWay(arr, 1, 1, row, col);
+                for (int[] column : arr) {
+                    for (int i : column) {
+                        System.out.print(i + " ");
+                    }
+                    System.out.println();
+                }
+                System.out.println("===========");
+                for (int i = 1, j = 1; i <= row && j <= col; ) {
+                    System.out.println("(" + (i - 1) + "," + (j - 1) + ")");
+                    if (i + 1 <= row && arr[i + 1][j] == 2) {
+                        i++;
+                    } else {
+                        j++;
+                    }
+                }
+            }catch (Exception e){
+                continue;
             }
         }
     }
-    public static boolean findWay(int[][]arr,int i,int j,int row,int col){
-        if(arr[row][col]==2){
+    public static boolean findWay(int[][]arr,int i,int j,int col,int row){
+        if(arr[col][row]==2){
             return true;
         }
         if(arr[i][j]==0){
             arr[i][j]=2;
-            if(findWay(arr,i,j+1,row,col)||//下
-               findWay(arr, i+1, j,row,col)||//右
+            if(findWay(arr,i,j+1,row,col)||//右
+               findWay(arr, i+1, j,row,col)||//
                 findWay(arr,i,j-1,row,col)||//上
                  findWay(arr, i-1, j,row,col)){//左
                       return true;//满足继续往下走
