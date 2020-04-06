@@ -44,19 +44,33 @@ public class Main {
                     System.out.println();
                 }
                 System.out.println("===========");
+                //终极无敌修改版  解决了上个版本无法向上走向左走的局限性
                 for (int i = 1, j = 1; i <= row && j <= col; ) {
                     System.out.println("(" + (i - 1) + "," + (j - 1) + ")");
                     if (i + 1 <= row && arr[i + 1][j] == 2) {
+                        arr[i][j]=3;
                         i++;
-                    } else {
-                        j++;
+                    } else if(j+1<=col && arr[i][j+1] == 2){
+                        arr[i][j]=3;
+                            j++;
+                        }else if(j-1>=0 && arr[i-1][j] == 2){
+                        arr[i][j]=3;
+                            i--;
+                        }else if(i-1>=0 && arr[i][j-1] == 2){
+                        arr[i][j]=3;
+                            j--;
+                        }else {
+                            break;
+                        }
                     }
-                }
+
             }catch (Exception e){
                 continue;
             }
         }
     }
+
+
     public static boolean findWay(int[][]arr,int i,int j,int col,int row){
         if(arr[col][row]==2){
             return true;
