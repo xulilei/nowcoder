@@ -13,7 +13,6 @@ public class Main {
             int col = Integer.parseInt(s[1]);
 
             int[][] arr = new int[row + 2][col + 2];
-
                 for (int i = 0; i <= col + 1; i++) {
                     arr[0][i] = 1;
                     arr[row + 1][i] = 1;
@@ -69,15 +68,16 @@ public class Main {
 
 
     public static boolean findWay(int[][]arr,int i,int j,int col,int row){
+        //这个就是防止越界的
         if(arr[col][row]==2){
             return true;
         }
         if(arr[i][j]==0){
             arr[i][j]=2;
-            if(findWay(arr,i,j+1,row,col)||//右
-                    findWay(arr, i+1, j,row,col)||//
-                    findWay(arr,i,j-1,row,col)||//上
-                    findWay(arr, i-1, j,row,col)){//左
+            if(findWay(arr,i,j+1,col,row)||//右
+                    findWay(arr, i+1, j,col,row)||//
+                    findWay(arr,i,j-1,col,row)||//上
+                    findWay(arr, i-1, j,col,row)){//左
                 return true;//满足继续往下走
             }else {
                 arr[i][j] = 0;
