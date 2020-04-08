@@ -1,7 +1,7 @@
 package 进制转转;
 
 import java.util.Scanner;
-
+//并输出1的个数
 public class 十到二 {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
