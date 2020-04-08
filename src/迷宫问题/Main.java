@@ -74,6 +74,7 @@ public class Main {
         }
         if(arr[i][j]==0){
             arr[i][j]=2;
+
             if(findWay(arr,i,j+1,col,row)||//右
                     findWay(arr, i+1, j,col,row)||//
                     findWay(arr,i,j-1,col,row)||//上

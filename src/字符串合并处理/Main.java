@@ -49,8 +49,8 @@ public class Main {
         for (int i = 0; i < ch.length; i++) {
             if ((ch[i] >= '0' && ch[i] <= '9') || (ch[i] >= 'a' && ch[i] <= 'f') || (ch[i] >= 'A' && ch[i] <= 'F')) {
                 ch[i] = password[String.valueOf(dictionary).indexOf(ch[i])];
-                /*问题不能理解为什么这样不行？
-                for(int j=0;j<dictionary.length;j++){
+
+               /* for(int j=0;j<dictionary.length;j++){
                     if(ch[i]==dictionary[j]){
                         ch[i]=password[j];
                     }
